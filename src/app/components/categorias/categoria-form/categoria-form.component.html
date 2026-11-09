@@ -1,0 +1,17 @@
+<div style="max-width: 500px; margin: 30px auto; padding: 25px; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+  <h2 style="margin-top: 0; color: #2c3e50;">{{ esEdicion ? 'Editar Categoría' : 'Nueva Categoría' }}</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div style="margin-bottom: 15px;">
+      <label style="font-weight: bold;">Nombre:</label>
+      <input type="text" [(ngModel)]="categoria.nombre" name="nombre" required style="width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box;">
+    </div>
+    <div style="margin-bottom: 20px;">
+      <label style="font-weight: bold;">Descripción:</label>
+      <textarea [(ngModel)]="categoria.descripcion" name="descripcion" style="width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box; height: 80px;"></textarea>
+    </div>
+    <div style="display: flex; gap: 10px;">
+      <button type="submit" style="flex: 1; padding: 10px; background: #2ecc71; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Guardar</button>
+      <a routerLink="/categorias" style="flex: 1; text-align: center; padding: 10px; background: #95a5a6; color: white; border-radius: 4px; text-decoration: none; font-weight: bold; box-sizing: border-box;">Cancelar</a>
+    </div>
+  </form>
+</div>

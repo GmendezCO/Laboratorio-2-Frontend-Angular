@@ -1,0 +1,33 @@
+<div style="max-width: 900px; margin: 20px auto;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <h2 style="color: #2c3e50; margin: 0;">Gestión de Productos</h2>
+    <a *ngIf="authService.isAdmin()" routerLink="/productos/nuevo" style="background: #2ecc71; color: white; padding: 10px 15px; border-radius: 4px; text-decoration: none; font-weight: bold;">+ Nuevo Producto</a>
+  </div>
+
+  <table style="width: 100%; border-collapse: collapse; text-align: left; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+    <thead>
+    <tr style="background-color: #34495e; color: white;">
+      <th style="padding: 12px; border: 1px solid #ddd;">ID</th>
+      <th style="padding: 12px; border: 1px solid #ddd;">Nombre</th>
+      <th style="padding: 12px; border: 1px solid #ddd;">Precio</th>
+      <th style="padding: 12px; border: 1px solid #ddd;">Categoría</th>
+      <th *ngIf="authService.isAdmin()" style="padding: 12px; border: 1px solid #ddd; text-align: center;">Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let prod of productos">
+      <td style="padding: 10px; border: 1px solid #ddd;">{{ prod.id }}</td>
+      <td style="padding: 10px; border: 1px solid #ddd;">{{ prod.nombre }}</td>
+      <td style="padding: 10px; border: 1px solid #ddd;">{{ prod.precio | currency }}</td>
+      <td style="padding: 10px; border: 1px solid #ddd;">{{ prod.categoria?.nombre || prod.categoriaNombre || 'Sin Categoría' }}</td>
+      <td *ngIf="authService.isAdmin()" style="padding: 10px; border: 1px solid #ddd; text-align: center;">
+        <a [routerLink]="['/productos/editar', prod.id]" style="background: #f39c12; color: white; padding: 6px 10px; border-radius: 4px; text-decoration: none; margin-right: 5px; display: inline-block;">Editar</a>
+        <button (click)="eliminar(prod.id)" style="background: #e74c3c; color: white; border: none; padding: 6px 10px; border-radius: 4px; cursor: pointer;">Eliminar</button>
+      </td>
+    </tr>
+    <tr *ngIf="productos.length === 0">
+      <td [attr.colspan]="authService.isAdmin() ? 5 : 4" style="text-align: center; padding: 15px; color: #7f8c8d;">No hay productos registrados</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

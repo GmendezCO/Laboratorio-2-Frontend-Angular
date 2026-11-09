@@ -1,0 +1,24 @@
+<div style="max-width: 400px; margin: 40px auto; padding: 25px; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+  <h2 style="margin-top: 0; text-align: center; color: #2c3e50;">Registro de Usuario</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div style="margin-bottom: 15px;">
+      <label style="font-weight: bold;">Usuario / Email:</label>
+      <input type="text" [(ngModel)]="usuario.username" name="username" required style="width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box;">
+    </div>
+    <div style="margin-bottom: 15px;">
+      <label style="font-weight: bold;">Contraseña:</label>
+      <input type="password" [(ngModel)]="usuario.password" name="password" required style="width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box;">
+    </div>
+    <div style="margin-bottom: 20px;">
+      <label style="font-weight: bold;">Rol:</label>
+      <select [(ngModel)]="usuario.role" name="role" style="width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box;">
+        <option value="USER">USER</option>
+        <option value="SUPER-ADMIN-ROLE">SUPER-ADMIN-ROLE</option>
+      </select>
+    </div>
+    <button type="submit" style="width: 100%; padding: 10px; background: #2ecc71; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer;">Registrarse</button>
+  </form>
+  <p style="margin-top: 15px; text-align: center;">
+    ¿Ya tienes cuenta? <a routerLink="/login" style="color: #2ecc71;">Inicia sesión aquí</a>
+  </p>
+</div>

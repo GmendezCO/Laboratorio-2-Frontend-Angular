@@ -1,0 +1,18 @@
+<nav style="background-color: #2c3e50; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-radius: 6px;">
+  <div style="display: flex; gap: 20px; align-items: center;">
+    <strong style="font-size: 1.2rem; color: #ecf0f1;">Laboratorio 2</strong>
+    <ng-container *ngIf="authService.isLoggedIn()">
+      <a routerLink="/productos" style="color: white; text-decoration: none;">Productos</a>
+      <a routerLink="/categorias" style="color: white; text-decoration: none;">Categorías</a>
+      <!-- Restricción de menú: Solo SUPER-ADMIN-ROLE ve esta opción -->
+      <a *ngIf="authService.isAdmin()" routerLink="/usuarios" style="color: #f1c40f; text-decoration: none; font-weight: bold;">Usuarios (Admin)</a>
+    </ng-container>
+  </div>
+  <div>
+    <ng-container *ngIf="!authService.isLoggedIn()">
+      <a routerLink="/login" style="color: white; margin-right: 15px; text-decoration: none;">Iniciar Sesión</a>
+      <a routerLink="/registro" style="color: white; text-decoration: none;">Registrarse</a>
+    </ng-container>
+    <button *ngIf="authService.isLoggedIn()" (click)="logout()" style="background: #e74c3c; color: white; border: none; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-weight: bold;">Cerrar Sesión</button>
+  </div>
+</nav>
